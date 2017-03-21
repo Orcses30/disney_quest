@@ -1,0 +1,13 @@
+<%= form_for ([@eatery, @eatery.rates.build]) do |f| %>
+  <p>
+    <%= f.label :rating_value %><br>
+    <%= f.text_field :rating_value %>
+  </p>
+  <p>
+    <%= f.label :rating_description %><br>
+    <%= f.text_area :rating_description %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

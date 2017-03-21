@@ -1,0 +1,26 @@
+<h1> List of Disney Eateries</h1>
+<%= link_to 'New Eatery', new_eatery_path %>
+<%= link_to 'Welcome Page', root_path%>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Park</th>
+    <th>Area</th>
+  </tr>
+
+  <% @eateries.each do |eatery| %>
+    <tr>
+      <td><%= eatery.eatery_name %>
+      <td><%= eatery.eatery_description %>
+      <td><%= eatery.eatery_park %>
+      <td><%= eatery.eatery_area %>
+      <td><%= link_to 'View ' + eatery.eatery_name, eatery_path(eatery) %></td>
+      <td><%= link_to 'Edit ' + eatery.eatery_name, edit_eatery_path(eatery) %></td>
+      <td><%= link_to 'Destroy ' + eatery.eatery_name, eatery_path(eatery),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>

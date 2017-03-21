@@ -1,0 +1,30 @@
+<h2>Eatery Information</h2>
+
+<p>
+  <strong>Name:</strong>
+  <%= @eatery.eatery_name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @eatery.eatery_description %>
+</p>
+
+<p>
+  <strong>Park:</strong>
+  <%= @eatery.eatery_park %>
+</p>
+
+<p>
+  <strong>Area:</strong>
+  <%= @eatery.eatery_area %>
+</p>
+
+<h2>Ratings</h2>
+<%= render @eatery.rates %>
+
+<h2>Add a rating</h2>
+<%= render 'rates/form' %>
+
+<%= link_to 'Back', eateries_path %>
+<%= link_to 'Edit', edit_eatery_path %>
