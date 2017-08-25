@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170320093403) do
+ActiveRecord::Schema.define(version: 20170825011639) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,14 @@ ActiveRecord::Schema.define(version: 20170320093403) do
     t.datetime "updated_at",         null: false
   end
 
+  create_table "parks", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "park_id"
+    t.string   "name"
+    t.index ["park_id"], name: "index_parks_on_park_id", using: :btree
+  end
+
   create_table "rates", force: :cascade do |t|
     t.integer  "rating_value"
     t.text     "rating_description"
@@ -33,5 +41,6 @@ ActiveRecord::Schema.define(version: 20170320093403) do
     t.index ["eatery_id"], name: "index_rates_on_eatery_id", using: :btree
   end
 
+  add_foreign_key "parks", "parks"
   add_foreign_key "rates", "eateries"
 end

@@ -29,6 +29,11 @@
     <%= f.text_field :eatery_park %>
   </p>
 
+  <div class="field">
+    <%= f.label :park %><br>
+    <%= f.collection_select :park_ids, Park.all, :id, :name %>
+  </div>
+
   <p>
     <%= f.label :eatery_area %><br>
     <%= f.text_field :eatery_area %>
