@@ -24,14 +24,9 @@
     <%= f.text_area :eatery_description %>
   </p>
 
-  <p>
-    <%= f.label :eatery_park %><br>
-    <%= f.text_field :eatery_park %>
-  </p>
-
   <div class="field">
     <%= f.label :park %><br>
-    <%= f.collection_select :park_ids, Park.all, :id, :name %>
+    <%= f.collection_select(:parks_id, Eatery.all, :id, :parks_id) %>
   </div>
 
   <p>

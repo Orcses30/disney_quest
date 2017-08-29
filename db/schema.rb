@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170825011639) do
+ActiveRecord::Schema.define(version: 20170829010319) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,18 +18,17 @@ ActiveRecord::Schema.define(version: 20170825011639) do
   create_table "eateries", force: :cascade do |t|
     t.string   "eatery_name"
     t.text     "eatery_description"
-    t.string   "eatery_park"
     t.string   "eatery_area"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
+    t.integer  "parks_id"
+    t.index ["parks_id"], name: "index_eateries_on_parks_id", using: :btree
   end
 
   create_table "parks", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "park_id"
     t.string   "name"
-    t.index ["park_id"], name: "index_parks_on_park_id", using: :btree
   end
 
   create_table "rates", force: :cascade do |t|
@@ -41,6 +40,6 @@ ActiveRecord::Schema.define(version: 20170825011639) do
     t.index ["eatery_id"], name: "index_rates_on_eatery_id", using: :btree
   end
 
-  add_foreign_key "parks", "parks"
+  add_foreign_key "eateries", "parks", column: "parks_id"
   add_foreign_key "rates", "eateries"
 end
