@@ -26,7 +26,7 @@
 
   <div class="field">
     <%= f.label :park %><br>
-    <%= f.collection_select(:parks_id, Eatery.all, :id, :parks_id) %>
+    <%= f.select :park_id, options_for_select(Park.pluck(:name, :id)) %>
   </div>
 
   <p>

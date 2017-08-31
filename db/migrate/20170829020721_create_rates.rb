@@ -3,8 +3,7 @@ class CreateRates < ActiveRecord::Migration[5.0]
     create_table :rates do |t|
       t.integer :rating_value
       t.text :rating_description
-      t.references :eatery, foreign_key: true
-
+      t.integer :eatery_id
       t.timestamps
     end
   end
