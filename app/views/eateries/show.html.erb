@@ -12,7 +12,7 @@
 
 <p>
   <strong>Park:</strong>
-  <%= @eatery.find(@park.park_id).name %>
+  <%= @eatery.park.try :name %>
 </p>
 
 <p>

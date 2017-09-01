@@ -14,7 +14,7 @@
     <tr>
       <td><%= eatery.eatery_name %>
       <td><%= eatery.eatery_description %>
-      <td><%= eatery.park_id %>
+      <td><%= eatery.park.try :name %>
       <td><%= eatery.eatery_area %>
       <td><%= link_to 'View ' + eatery.eatery_name, eatery_path(eatery) %></td>
       <td><%= link_to 'Edit ' + eatery.eatery_name, edit_eatery_path(eatery) %></td>
