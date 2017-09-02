@@ -26,7 +26,7 @@
 
   <div class="field">
     <%= f.label :park %><br>
-    <%= f.select :park_id, options_for_select(Park.pluck(:name, :id)) %>
+    <%= f.select :park_id, options_for_select(Park.pluck(:name, :id), @eatery.park_id)  %>
   </div>
 
   <p>
