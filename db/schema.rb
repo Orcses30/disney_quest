@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20170829020721) do
   end
 
   create_table "rates", force: :cascade do |t|
-    t.integer  "rating_value"
+    t.text     "rating_value"
     t.text     "rating_description"
     t.integer  "eatery_id"
     t.datetime "created_at",         null: false

@@ -1,7 +1,7 @@
 <%= form_for ([@eatery, @eatery.rates.build]) do |f| %>
   <p>
     <%= f.label :rating_value %><br>
-    <%= f.text_field :rating_value %>
+    <%= f.select :rating_value, options_for_select(Rate.pluck(:rating_value, :id)) %>
   </p>
   <p>
     <%= f.label :rating_description %><br>

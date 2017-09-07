@@ -9,7 +9,7 @@
 </p>
 
 <p>
-  <%= link_to 'Remove Troll Rating', [rate.eatery, rate],
-               method: :delete,
-              data: {confirm: 'Are you sure you want to remove troll rating?' } %>
+  <%= link_to 'Destroy' , [rate.eatery, rate],
+        method: :delete,
+        data: { confirm: 'Are you sure?' } %>
 </p>
