@@ -29,10 +29,10 @@
     <%= f.select :park_id, options_for_select(Park.pluck(:name, :id), @eatery.park_id)  %>
   </div>
 
-  <p>
-    <%= f.label :eatery_area %><br>
-    <%= f.text_field :eatery_area %>
-  </p>
+  <div class="field">
+    <%= f.label :area %><br>
+    <%= f.select :area_id, options_for_select(Area.pluck(:name, :id), @eatery.area_id)  %>
+  </div>
 
   <p>
     <%= f.submit %>

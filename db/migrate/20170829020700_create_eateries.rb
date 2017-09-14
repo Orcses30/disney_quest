@@ -5,6 +5,7 @@ class CreateEateries < ActiveRecord::Migration[5.0]
       t.text :eatery_description
       t.string :eatery_area
       t.integer :park_id
+      t.integer :area_id
       t.timestamps
     end
   end

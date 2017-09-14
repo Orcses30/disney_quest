@@ -17,7 +17,7 @@
 
 <p>
   <strong>Area:</strong>
-  <%= @eatery.eatery_area %>
+  <%= @eatery.area.try :name %>
 </p>
 
 <h2>Ratings</h2>
