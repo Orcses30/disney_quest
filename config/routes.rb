@@ -8,4 +8,7 @@ Rails.application.routes.draw do
   resources :tasks
   root 'welcome#index'
 
+  resources :dropdowns do
+    get :update_dropdown, on: :collection #-> url.com/controller/dropdowns
+  end
 end
