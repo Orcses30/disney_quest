@@ -1,18 +1,4 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
-Park.destroy_all
-animal_kingdom = Park.create!(name: "Animal Kingdom")
-blizzard_beach = Park.create!(name: "Blizzard Beach")
-epcot = Park.create!(name: "Epcot")
-hollywood_studios = Park.create!(name: "Hollywood Studios")
-magic_kingdom = Park.create!(name: "Magic Kingdom")
-typhoon_lagoon = Park.create!(name: "Typhoon Lagoon")
+require 'csv'
 
 Rate.destroy_all
 rate_one = Rate.create!(rating_value: "1 - worst")
@@ -26,38 +12,18 @@ rate_eight = Rate.create!(rating_value: "8 - good")
 rate_nine = Rate.create!(rating_value: "9 - great")
 rate_ten = Rate.create!(rating_value: "10 - best")
 
-Area.destroy_all
-adventureland = Area.create!(name: "Adventureland", park_name_fk: "Magic Kingdom")
-fantasyland = Area.create!(name: "Fantasyland", park_name_fk: "Magic Kingdom")
-frontierland = Area.create!(name: "Frontierland", park_name_fk: "Magic Kingdom")
-liberty_square = Area.create!(name: "Liberty Square", park_name_fk: "Magic Kingdom")
-main_street_usa = Area.create!(name: "Main Street USA", park_name_fk: "Magic Kingdom")
-tomorrowland = Area.create!(name: "Tomorrowland", park_name_fk: "Magic Kingdom")
-future_world_east = Area.create!(name: "Future World East", park_name_fk: "Epcot")
-future_world_west = Area.create!(name: "Future World West", park_name_fk: "Epcot")
-world_showcase_mexico = Area.create!(name: "World Showcase Mexico", park_name_fk: "Epcot")
-world_showcase_norway = Area.create!(name: "World Showcase Norway", park_name_fk: "Epcot")
-world_showcase_china = Area.create!(name: "World Showcase China", park_name_fk: "Epcot")
-world_showcase_germany = Area.create!(name: "World Showcase Germany", park_name_fk: "Epcot")
-world_showcase_italy = Area.create!(name: "World Showcase Italy", park_name_fk: "Epcot")
-world_showcase_the_american_adventure = Area.create!(name: "World Showcase The American Adventure", park_name_fk: "Epcot")
-world_showcase_japan = Area.create!(name: "World Showcase Japan", park_name_fk: "Epcot")
-world_showcase_morocco = Area.create!(name: "World Showcase Morocco", park_name_fk: "Epcot")
-world_showcase_france = Area.create!(name: "World Showcase France", park_name_fk: "Epcot")
-world_showcase_united_kingdom = Area.create!(name: "World Showcase United Kingdom", park_name_fk: "Epcot")
-world_showcase_canada = Area.create!(name: "World Showcase Canada", park_name_fk: "Epcot")
-hollywood_boulevard = Area.create!(name: "Hollywood Boulevard", park_name_fk: "Hollywood Studios")
-echo_lake = Area.create!(name: "Echo Lake", park_name_fk: "Hollywood Studios")
-muppets_courtyard = Area.create!(name: "Muppets Courtyard", park_name_fk: "Hollywood Studios")
-commissary_lane = Area.create!(name: "Commissary Lane", park_name_fk: "Hollywood Studios")
-pixar_place = Area.create!(name: "Pixar Place", park_name_fk: "Hollywood Studios")
-animation_courtyard = Area.create!(name: "Animation Courtyard", park_name_fk: "Hollywood Studios")
-sunset_boulevard = Area.create!(name: "Sunset Boulevard", park_name_fk: "Hollywood Studios")
-oasis = Area.create!(name: "Oasis", park_name_fk: "Animal Kingdom")
-discovery_island = Area.create!(name: "Discovery Island", park_name_fk: "Animal Kingdom")
-pandora_world_of_avatar = Area.create!(name: "Pandora World of Avatar", park_name_fk: "Animal Kingdom")
-africa = Area.create!(name: "Africa", park_name_fk: "Animal Kingdom")
-asia = Area.create!(name: "Asia", park_name_fk: "Animal Kingdom")
-dinoland_usa = Area.create!(name: "Dinoland USA", park_name_fk: "Animal Kingdom")
-blizzard_beach_area = Area.create!(name: "Blizzard Beach Area", park_name_fk: "Blizzard Beach")
-typhoon_lagoon_area = Area.create!(name: "Typhoon Lagoon Area", park_name_fk: "Typhoon Lagoon")
+puts "Importing parks..."
+CSV.foreach(Rails.root.join("parks.csv"), headers: true) do |row|
+  Park.create! do |park|
+    park.id = row[0]
+    park.name = row[1]
+  end
+end
+
+puts "Importing areas..."
+CSV.foreach(Rails.root.join("areas.csv"), headers: true) do |row|
+  Area.create! do |area|
+    area.name = row[0]
+    area.park_id = row[1]
+  end
+end

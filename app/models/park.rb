@@ -1,4 +1,4 @@
 class Park < ApplicationRecord
   has_many :eateries
-  has_many :parks
+  has_many :areas
 end

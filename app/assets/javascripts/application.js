@@ -14,8 +14,3 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-$(document).on("change", "#select"), function(e) {
-  $.get("/dropdowns/update_dropdown", {id: $(this).val() }, function(data) {
-    puts "Asia"
-  });
-});
