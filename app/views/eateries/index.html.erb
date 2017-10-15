@@ -12,10 +12,10 @@
 
   <% @eateries.each do |eatery| %>
     <tr>
-      <td><%= eatery.eatery_name %>
-      <td><%= eatery.eatery_description %>
-      <td><%= eatery.park.try :name %>
-      <td><%= eatery.area.try :name %>
+      <td><%= eatery.eatery_name %></td>
+      <td><%= eatery.eatery_description %></td>
+      <td><%= eatery.park.try :name %></td>
+      <td><%= eatery.area.try :name %></td>
       <td><%= link_to 'View ' + eatery.eatery_name, eatery_path(eatery) %></td>
       <td><%= link_to 'Edit ' + eatery.eatery_name, edit_eatery_path(eatery) %></td>
       <td><%= link_to 'Destroy ' + eatery.eatery_name, eatery_path(eatery),

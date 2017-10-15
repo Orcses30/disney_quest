@@ -1,5 +1,11 @@
 <%= form_for @eatery do |f| %>
 
+  <% if @eatery.new_record? %>
+    <script src="eateries_new.js"></script>
+  <% else %>
+    <script src="eateries_edit.js"></script>
+  <% end %>
+
   <% if @eatery.errors.any? %>
     <div id="error_explanation">
       <h2>
@@ -25,16 +31,17 @@
   </p>
 
   <div class="field">
-    <%= f.label :park %><br>
+    <%= f.label :park_id %><br>
     <%= f.collection_select :park_id, Park.order(:name), :id, :name, include_blank: true %>
   </div>
 
   <div class="field">
-    <%= f.label :area %><br>
+    <%= f.label :area_id %><br>
     <%= f.grouped_collection_select :area_id, Park.order(:name), :areas, :name, :id, :name, include_blank: true  %>
   </div>
 
   <p>
     <%= f.submit %>
   </P>
+
 <% end %>

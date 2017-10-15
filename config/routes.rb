@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :eateries do
     resources :rates
   end
+  
   resources :tasks
   root 'welcome#index'
 

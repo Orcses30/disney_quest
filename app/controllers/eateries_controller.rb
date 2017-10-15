@@ -17,28 +17,25 @@ class EateriesController < ApplicationController
 
   def create
     @eatery = Eatery.new(eatery_params)
-
     if @eatery.save
       redirect_to @eatery
     else
-      render 'new'
+      render :new
     end
   end
 
   def update
     @eatery = Eatery.find(params[:id])
-
     if @eatery.update(eatery_params)
       redirect_to @eatery
     else
-      render 'edit'
+      render :edit
     end
   end
 
   def destroy
     @eatery = Eatery.find(params[:id])
     @eatery.destroy
-
     redirect_to eateries_path
   end
 
